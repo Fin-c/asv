@@ -3,7 +3,9 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import { Button, CardActionArea, CardActions } from '@mui/material';
+import image from "../../assets/picture.jpg"
+
 
 export default function cardComponent() {
 
@@ -20,9 +22,9 @@ export default function cardComponent() {
                 <CardActionArea>
                     <CardMedia
                         component="img"
-                        height="140"
-                        image="/static/images/cards/contemplative-reptile.jpg"
-                        alt="green iguana"
+                        height="250"
+                        image={image}
+                        alt="vereinssee"
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
@@ -34,13 +36,18 @@ export default function cardComponent() {
                         </Typography>
                     </CardContent>
                 </CardActionArea>
+                <CardActions>
+                    <Button size="small" color="primary">
+                        Beitrag anzeigen
+                    </Button>
+                </CardActions>
             </Card>
             <Card sx={{ maxWidth: 345 }}>
                 <CardActionArea>
                     <CardMedia
                         component="img"
-                        height="140"
-                        image="/static/images/cards/contemplative-reptile.jpg"
+                        height="250"
+                        image={image}
                         alt="green iguana"
                     />
                     <CardContent>
@@ -53,13 +60,18 @@ export default function cardComponent() {
                         </Typography>
                     </CardContent>
                 </CardActionArea>
+                <CardActions>
+                    <Button size="small" color="primary">
+                        Beitrag anzeigen
+                    </Button>
+                </CardActions>
             </Card>
             <Card sx={{ maxWidth: 345 }}>
                 <CardActionArea>
                     <CardMedia
                         component="img"
-                        height="140"
-                        image="/static/images/cards/contemplative-reptile.jpg"
+                        height="250"
+                        image={image}
                         alt="green iguana"
                     />
                     <CardContent>
@@ -72,6 +84,11 @@ export default function cardComponent() {
                         </Typography>
                     </CardContent>
                 </CardActionArea>
+                <CardActions>
+                    <Button size="small" color="primary">
+                        Beitrag anzeigen
+                    </Button>
+                </CardActions>
             </Card>
         </div>
     );

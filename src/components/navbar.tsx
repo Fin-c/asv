@@ -1,15 +1,135 @@
+// import * as React from 'react';
+// import Box from '@mui/material/Box';
+// import Link from '@mui/material/Link';
+// import AppBar from '../components/AppBar';
+// import Toolbar from '../components/Toolbar';
+// import InstagramIcon from '@mui/icons-material/Instagram';
+// import { Route, Routes } from 'react-router-dom';
+// import { About } from './pages/About';
+// import { Aktuelles } from './pages/Aktuelles';
+
+// const rightLink = {
+//   fontSize: 16,
+//   color: 'common.white',
+//   ml: 3,
+// };
+// const icon = {
+//   fontSize: 25,
+//   color: 'common.white',
+//   ml: 3,
+//   cursor: "pointer",
+// };
+
+// const leftLinks = {
+//   fontSize: 20,
+//   color: "common.white",
+//   mr: "25px",
+// }
+
+// const toolbarStyle = {
+//   minHeight: '50px',
+//   borderBottom: "solid",
+//   borderColor: "black",
+//   borderWidth: "1px",
+// };
+
+
+
+
+// function navbar() {
+
+
+
+//   return (
+//     <div>
+//       <AppBar sx={{ bgcolor: "#212121" }} position="fixed" >
+//         <Toolbar sx={{ justifyContent: 'space-between' }} style={toolbarStyle}>
+//           <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-start' }}>
+
+//             <Link
+//               variant="h6"
+//               underline="hover"
+//               color="inherit"
+//               href="/Jugendsparte"
+//               sx={{ ...leftLinks }}
+//             >
+//             </Link>
+//             <Link
+//               variant="h6"
+//               underline="hover"
+//               color="inherit"
+//               href="/Blog"
+//               sx={{ ...leftLinks }}
+//             >
+//               {'Blog'}
+//             </Link>
+//             <Link
+//               variant="h6"
+//               underline="hover"
+//               color="inherit"
+//               href="/about-us/"
+//               sx={{ ...leftLinks }}
+//             >
+//               {'über uns'}
+//             </Link>
+//             <Link
+//               variant="h6"
+//               underline="hover"
+//               color="inherit"
+//               href="/Termine"
+//               sx={{ ...leftLinks }}
+//             >
+//               {'Termine'}
+//             </Link>
+
+//           </Box>
+//           <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
+//             <Link
+//               color="inherit"
+//               variant="h6"
+//               underline="none"
+//               href="/sign-in/"
+//               sx={{ ...rightLink }}
+//             >
+//               {'Intern'}
+//             </Link>
+//             <InstagramIcon
+//               href="https://www.instagram.com/asv_rostiger_haken/?hl=de"
+//               sx={{ ...icon }}
+//             />
+
+//           </Box>
+//         </Toolbar>
+//       </AppBar>
+//       <Toolbar />
+//     </div >
+//   );
+// }
+
+// export default navbar;
+
 import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
-import AppBar from '../components/AppBar';
-import Toolbar from '../components/Toolbar';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
+import AdbIcon from '@mui/icons-material/Adb';
+import { Link } from "react-router-dom"
 import InstagramIcon from '@mui/icons-material/Instagram';
 
-const rightLink = {
-  fontSize: 16,
-  color: 'common.white',
-  ml: 3,
-};
+const pages = ['Aktuelles', 'Jugendgruppe', 'Blog'];
+const intern = ['intern'];
+const socialMedia = ['instagram'];
+
+
 const icon = {
   fontSize: 25,
   color: 'common.white',
@@ -17,106 +137,121 @@ const icon = {
   cursor: "pointer",
 };
 
-const leftLinks = {
-  fontSize: 20,
-  color: "common.white",
-  mr: "25px",
-}
+function ResponsiveAppBar() {
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
-const toolbarStyle = {
-  minHeight: '50px',
-  borderBottom: "solid",
-  borderColor: "black",
-  borderWidth: "1px",
-};
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElUser(event.currentTarget);
+  };
 
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
 
-
-
-function navbar() {
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
 
   return (
-    <div>
-      <AppBar sx={{ bgcolor: "#212121" }} position="fixed" >
-        <Toolbar sx={{ justifyContent: 'space-between' }} style={toolbarStyle}>
-          <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-start' }}>
-            <Link
-              variant="h6"
-              underline="none"
+    <AppBar position="static" sx={{ bgcolor: "#212121" }}>
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'roboto',
+              fontWeight: 200,
+              letterSpacing: '.1rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            ASV Rostiger Haken
+          </Typography>
+
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
               color="inherit"
-              href="/Aktuelles"
-              sx={{ ...leftLinks }}
             >
-              {'Aktuelles'}
-            </Link>
-            <Link
-              variant="h6"
-              underline="none"
-              color="inherit"
-              href="/Vergleichsangeln"
-              sx={{ ...leftLinks }}
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: 'block', md: 'none' },
+              }}
             >
-              {'Vergleichsangeln'}
-            </Link>
-            <Link
-              variant="h6"
-              underline="none"
-              color="inherit"
-              href="/Jugendsparte"
-              sx={{ ...leftLinks }}
-            >
-              {'Jugendsparte'}
-            </Link>
-            <Link
-              variant="h6"
-              underline="none"
-              color="inherit"
-              href="/Blog"
-              sx={{ ...leftLinks }}
-            >
-              {'Blog'}
-            </Link>
-            <Link
-              variant="h6"
-              underline="none"
-              color="inherit"
-              href="/about-us/"
-              sx={{ ...leftLinks }}
-            >
-              {'über uns'}
-            </Link>
-            <Link
-              variant="h6"
-              underline="none"
-              color="inherit"
-              href="/Termine"
-              sx={{ ...leftLinks }}
-            >
-              {'Termine'}
-            </Link>
+              {pages.map((page) => (
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">
+
+                    <Link style={{ textDecoration: "none", color: "white" }} to={`/${page}`}>{page}</Link></Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            {pages.map((page) => (
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >     <Link style={{ textDecoration: "none", color: "white" }} to={`/${page}`}>{page}</Link>
+
+              </Button>
+            ))}
           </Box>
           <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-            <Link
-              color="inherit"
-              variant="h6"
-              underline="none"
-              href="/sign-in/"
-              sx={{ ...rightLink }}
-            >
-              {'Intern'}
-            </Link>
-            <InstagramIcon
-              href="https://www.instagram.com/asv_rostiger_haken/?hl=de"
-              sx={{ ...icon }}
-            />
+            {intern.map((page) => (
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >     <Link style={{ textDecoration: "none", color: "white" }} to={`/${page}`}>{page}</Link>
 
+              </Button>
+            ))}
+            {socialMedia.map((page) => (
+              <InstagramIcon
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ icon }}
+              >     <Link to={`/${page}`}>{page}</Link>
+
+              </InstagramIcon>
+            ))}
           </Box>
+
         </Toolbar>
-      </AppBar>
-      <Toolbar />
-    </div >
+      </Container>
+    </AppBar >
   );
 }
-
-export default navbar;
-
+export default ResponsiveAppBar;
