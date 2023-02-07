@@ -1,14 +1,18 @@
-const http = require("http");
+const express = require("express");
+const connectDB = require("./config/db");
+const routes = require("./routes/dates");
+var bodyParser = require("body-parser");
 
-const hostname = "127.0.0.1";
-const port = 4000;
+const app = express();
+app.use(bodyParser.json());
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader("Content-Type", "text/plain");
-  res.end("Hello World");
-});
+// Connect Database
+connectDB();
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+app.get("/", (req, res) => res.send("Hello world!"));
+
+const port = process.env.PORT || 4000;
+app.use("/termine", routes);
+app.listen(port, () => console.log(`Server running on port ${port}`));
