@@ -117,11 +117,11 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
+
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
+
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+
 import { Link } from "react-router-dom"
 import InstagramIcon from '@mui/icons-material/Instagram';
 
@@ -129,13 +129,6 @@ const pages = ['Aktuelles', 'Jugendgruppe', 'Blog'];
 const intern = ['intern'];
 const socialMedia = ['instagram'];
 
-
-const icon = {
-  fontSize: 25,
-  color: 'common.white',
-  ml: 3,
-  cursor: "pointer",
-};
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -233,7 +226,7 @@ function ResponsiveAppBar() {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ color: 'white', mr: 1 }}
               >     <Link style={{ textDecoration: "none", color: "white" }} to={`/${page}`}>{page}</Link>
 
               </Button>
@@ -242,9 +235,15 @@ function ResponsiveAppBar() {
               <InstagramIcon
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ icon }}
+                sx={{
+                  fontSize: 25,
+                  color: 'common.white',
+                  ml: 3,
+                  mt: 0.5,
+                  alignItems: "center",
+                  cursor: "pointer",
+                }}
               >     <Link to={`/${page}`}>{page}</Link>
-
               </InstagramIcon>
             ))}
           </Box>
