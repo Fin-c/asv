@@ -125,7 +125,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { Link } from "react-router-dom"
 import InstagramIcon from '@mui/icons-material/Instagram';
 
-const pages = ['Aktuelles', 'Jugendgruppe', 'Blog'];
+const pages = ['Aktuelles', 'Jugendgruppe', 'Blog', 'Termine'];
 const intern = ['intern'];
 const socialMedia = ['instagram'];
 
